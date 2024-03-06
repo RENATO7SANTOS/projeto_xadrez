@@ -15,4 +15,13 @@ public class Knight extends ChessPiece{
         return "H";
     }
 
+    @Override
+    public boolean[][] possibleMoves() {
+       
+        boolean[][] matriz = new boolean[ getBoard().getRows()][ getBoard().getColumns() ];
+
+        return matriz;
+        
+    }
+
 }
