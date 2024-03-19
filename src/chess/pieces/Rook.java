@@ -7,8 +7,8 @@ import chess.Color;
 
 public class Rook extends ChessPiece {
 
-    public Rook(Board board, Color color) {
-        super(board, color);
+    public Rook( Board board, Color color ) {
+        super( board, color );
     }
     
     @Override
@@ -20,52 +20,56 @@ public class Rook extends ChessPiece {
     public boolean[][] possibleMoves() {
        
         boolean[][] matriz = new boolean[ getBoard().getRows()][ getBoard().getColumns() ];
+        Position matPosition = new Position(0, 0);
 
-        Position position = new Position(0, 0);
-
-        //above
-        position.setValue( position.getRow() -1, position.getColumn() );
-        while ( validatePosition( position ) ) {
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
-            position.setRow( position.getRow() -1 );
-        }
-        
-        if ( getBoard().positionExists( position )  && isThereOpponentPiece( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
-        }
-
-        //left
-        position.setValue(position.getRow(), position.getColumn() -1 );
-        while ( ( validatePosition( position ) ) ) {
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
-            position.setColumn( position.getColumn() -1 );
-        }
-
-        if ( getBoard().positionExists( position )  && isThereOpponentPiece( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
-        }
 
         //bottom
-        position.setValue( position.getRow() + 1, position.getColumn() );
-        while ( ( validatePosition( position ) ) ) {
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
-            position.setRow( position.getRow() + 1 );
+        matPosition.setValues( position.getRow() - 1, position.getColumn() );
+        while ( ( validatePosition( matPosition ) ) ) {
+            matriz[ matPosition.getRow() ][ matPosition.getColumn() ] = true;
+            matPosition.setRow( matPosition.getRow() - 1 );
         }
 
-        if ( getBoard().positionExists( position )  && isThereOpponentPiece( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        if ( getBoard().positionExists( matPosition )  && isThereOpponentPiece( matPosition ) ){
+            matriz[ matPosition.getRow() ][ matPosition.getColumn() ] = true;
+        }
+
+        //above
+        matPosition.setValues( position.getRow() +1, position.getColumn() );
+        while ( validatePosition( matPosition ) ) {
+            matriz[ matPosition.getRow() ][ matPosition.getColumn() ] = true;
+            matPosition.setRow( matPosition.getRow() +1 );
+        }
+        
+        if ( getBoard().positionExists( matPosition )  && isThereOpponentPiece( matPosition ) ){
+            matriz[ matPosition.getRow() ][ matPosition.getColumn() ] = true;
         }
 
         //right
-        position.setValue( position.getRow(),  position.getColumn() +1 );
-        while ( validatePosition( position ) ) {
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
-            position.setColumn( position.getColumn() + 1 );
+        matPosition.setValues( position.getRow(),  position.getColumn() +1 );
+        while ( validatePosition( matPosition ) ) {
+            matriz[ matPosition.getRow() ][ matPosition.getColumn() ] = true;
+            matPosition.setColumn( matPosition.getColumn() + 1 );
         }
 
-        if ( getBoard().positionExists( position )  && isThereOpponentPiece( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        if ( getBoard().positionExists( matPosition )  && isThereOpponentPiece( matPosition ) ){
+            matriz[ matPosition.getRow() ][ matPosition.getColumn() ] = true;
         }
+
+        //left
+        matPosition.setValues(position.getRow(), position.getColumn() -1 );
+        while ( ( validatePosition( matPosition ) ) ) {
+            matriz[ matPosition.getRow() ][ matPosition.getColumn() ] = true;
+            matPosition.setColumn( matPosition.getColumn() -1 );
+        }
+
+        if ( getBoard().positionExists( matPosition )  && isThereOpponentPiece( matPosition ) ){
+            matriz[ matPosition.getRow() ][ matPosition.getColumn() ] = true;
+        }
+
+
+
+
 
         return matriz;
         

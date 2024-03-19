@@ -25,54 +25,54 @@ public class King extends ChessPiece {
     public boolean[][] possibleMoves() {
         boolean[][] matriz = new boolean[ getBoard().getRows()][ getBoard().getColumns() ];
 
-        Position position = new Position(0, 0);
+        Position maPosition = new Position(0, 0);
 
         //above 
-        position.setValue( position.getRow() -1, position.getColumn() );
-        if ( getBoard().positionExists( position ) && canMove( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        maPosition.setValues( position.getRow() +1, position.getColumn() );
+        if ( getBoard().positionExists( maPosition ) && canMove( maPosition ) ){
+            matriz[ maPosition.getRow() ][ maPosition.getColumn() ] = true;
         }
 
         //below
-        position.setValue( position.getRow() +1, position.getColumn() );
-        if ( getBoard().positionExists( position ) && canMove( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        maPosition.setValues( position.getRow() -1, position.getColumn() );
+        if ( getBoard().positionExists( maPosition ) && canMove( maPosition ) ){
+            matriz[ maPosition.getRow() ][ maPosition.getColumn() ] = true;
         }
 
         //left
-        position.setValue( position.getRow(), position.getColumn() -1 );
-        if ( getBoard().positionExists( position ) && canMove( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        maPosition.setValues( position.getRow(), position.getColumn() -1 );
+        if ( getBoard().positionExists( maPosition ) && canMove( maPosition ) ){
+            matriz[ maPosition.getRow() ][ maPosition.getColumn() ] = true;
         }
 
         //rigth
-        position.setValue( position.getRow(), position.getColumn() + 1 );
-        if ( getBoard().positionExists( position ) && canMove( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        maPosition.setValues( position.getRow(), position.getColumn() + 1 );
+        if ( getBoard().positionExists( maPosition ) && canMove( maPosition ) ){
+            matriz[ maPosition.getRow() ][ maPosition.getColumn() ] = true;
         }
 
         //up left
-        position.setValue( position.getRow() -1 , position.getColumn() - 1 );
-        if ( getBoard().positionExists( position ) && canMove( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        maPosition.setValues( position.getRow() +1 , position.getColumn() - 1 );
+        if ( getBoard().positionExists( maPosition ) && canMove( maPosition ) ){
+            matriz[ maPosition.getRow() ][ maPosition.getColumn() ] = true;
         }
 
         //down left
-        position.setValue( position.getRow() +1 , position.getColumn() - 1 );
-        if ( getBoard().positionExists( position ) && canMove( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        maPosition.setValues( position.getRow() -1 , position.getColumn() - 1 );
+        if ( getBoard().positionExists( maPosition ) && canMove( maPosition ) ){
+            matriz[ maPosition.getRow() ][ maPosition.getColumn() ] = true;
         }
 
         //up rigth 
-        position.setValue( position.getRow() - 1 , position.getColumn() + 1 );
-        if ( getBoard().positionExists( position ) && canMove( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        maPosition.setValues( position.getRow() +1 , position.getColumn() + 1 );
+        if ( getBoard().positionExists( maPosition ) && canMove( maPosition ) ){
+            matriz[ maPosition.getRow() ][ maPosition.getColumn() ] = true;
         }
 
         //down right
-        position.setValue( position.getRow() +1 , position.getColumn() + 1 );
-        if ( getBoard().positionExists( position ) && canMove( position ) ){
-            matriz[ position.getRow() ][ position.getColumn() ] = true;
+        maPosition.setValues( position.getRow() -1 , position.getColumn() + 1 );
+        if ( getBoard().positionExists( maPosition ) && canMove( maPosition ) ){
+            matriz[ maPosition.getRow() ][ maPosition.getColumn() ] = true;
         }
 
         return matriz;    
