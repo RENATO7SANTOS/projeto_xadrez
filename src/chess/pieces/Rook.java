@@ -67,10 +67,6 @@ public class Rook extends ChessPiece {
             matriz[ matPosition.getRow() ][ matPosition.getColumn() ] = true;
         }
 
-
-
-
-
         return matriz;
         
     }
